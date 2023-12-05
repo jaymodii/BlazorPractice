@@ -1,0 +1,8 @@
+﻿@page "/pizzas-toppings"
+@using BlazorApp1.Data
+
+<h1>Our Latest Pizzas and Topping</h1>
+
+<Pizza PizzaName="Hawaiian" PizzaDescription="The one with pineapple" />
+
+<PizzaToppingComponent Topping="@(new PizzaTopping() { Name = "Chilli Sauce", Ingredients = "Three kinds of chilli." })" />

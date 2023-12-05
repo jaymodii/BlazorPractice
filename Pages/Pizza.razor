@@ -1,39 +1,64 @@
 ﻿@page "/pizza"
-@using BlazingPizza
+
+@using BlazorApp1.Data
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
 
 <PageTitle>Pizza</PageTitle>
 <div class="main">
-  <h1>Blazing Pizzas</h1>
-  <ul class="pizza-cards">
-    @if (specials != null)
-    {
-      @foreach (var special in specials)
-      {
-        <li>
-          <div class="pizza-info">
-              <span class="title fw-bolder">@special.Name </span > <br>
-                  @special.Description <br>
-                <span class="price text-danger">$@special.GetFormattedBasePrice()</span>
-          </div>
-        </li>
-      }
-    }
-  </ul>
+    <h1>Blazing Pizzas</h1>
+    <ul class="pizza-cards">
+        @if (specials != null)
+        {
+            @foreach (var special in specials)
+            {
+                <li @onclick="@(() => ShowConfigurePizzaDialog(special))" style="cursor:pointer">
+                    <div class="pizza-info">
+                        <span class="title">@special.Name</span><br>
+                        @special.Description<br>
+                        <span class="price text-danger">@special.GetFormattedBasePrice()</span>
+                    </div>
+                </li>
+            }
+        }
+    </ul>
 </div>
+@if (showingConfigureDialog)
+{
+    <ConfigurePizzaDialog Pizza="configuringPizza" />
+}
 
 @code {
     List<PizzaSpecial> specials = new();
-
-    protected override void OnInitialized()
+    PizzaData configuringPizza;
+    bool showingConfigureDialog;
+    protected override async Task OnInitializedAsync()
     {
-        specials.AddRange(new List<PizzaSpecial>
-        {
-            new PizzaSpecial { Name = "The Baconatorizor", BasePrice =  11.99M, Description = "It has EVERY kind of bacon"},
-            new PizzaSpecial { Name = "Buffalo chicken", BasePrice =  12.75M, Description = "Spicy chicken, hot sauce, and blue cheese, guaranteed to warm you up"},
-            new PizzaSpecial { Name = "Veggie Delight", BasePrice =  11.5M, Description = "It's like salad, but on a pizza"},
-            new PizzaSpecial { Name = "Margherita", BasePrice =  9.99M, Description = "Traditional Italian pizza with tomatoes and basil"},
-            new PizzaSpecial { Name = "Basic Cheese Pizza", BasePrice =  11.99M, Description = "It's cheesy and delicious. Why wouldn't you want one?"},
-            new PizzaSpecial { Name = "Classic pepperoni", BasePrice =  10.5M, Description = "It's the pizza you grew up with, but Blazing hot!"}               
-        });
+        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri + "PizzaSpecials");
     }
+
+    void ShowConfigurePizzaDialog(PizzaSpecial special)
+    {
+        configuringPizza = new PizzaData()
+            {
+                PizzaSpecial = special,
+                PizzaId = special.Id,
+              @*  Size = special.DefaultSize*@
+            };
+
+        showingConfigureDialog = true;
+    }
+    //protected override void OnInitialized()
+    //{
+    //    specials.AddRange(new List<PizzaSpecial>
+    //    {
+    //        new PizzaSpecial { Name = "The Baconatorizor", BasePrice =  11.99M, Description = "It has EVERY kind of bacon"},
+    //        new PizzaSpecial { Name = "Buffalo chicken", BasePrice =  12.75M, Description = "Spicy chicken, hot sauce, and blue cheese, guaranteed to warm you up"},
+    //        new PizzaSpecial { Name = "Veggie Delight", BasePrice =  11.5M, Description = "It's like salad, but on a pizza"},
+    //        new PizzaSpecial { Name = "Margherita", BasePrice =  9.99M, Description = "Traditional Italian pizza with tomatoes and basil"},
+    //        new PizzaSpecial { Name = "Basic Cheese Pizza", BasePrice =  11.99M, Description = "It's cheesy and delicious. Why wouldn't you want one?"},
+    //        new PizzaSpecial { Name = "Classic pepperoni", BasePrice =  10.5M, Description = "It's the pizza you grew up with, but Blazing hot!"}
+    //    });
+    //}
 }

@@ -1,10 +1,22 @@
 ﻿@page "/"
 
+@using BlazorApp1.Data
+
+@inject PizzaSalesState SalesState
 <PageTitle>Home Page</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Welcome to Blazing Pizzas</h1>
 
-Welcome to your new app.
+<p>Today, we've sold this many pizzas: @SalesState.PizzasSoldToday</p>
 
+<button @onclick="IncrementSales">Buy a Pizza</button>
 
-<Counter IncrementAmount="15" />
+@code {
+  
+    private void IncrementSales()
+    {
+        SalesState.PizzasSoldToday++;
+    }
+    PizzaData configuringPizza;
+    bool showingConfigureDialog;
+}

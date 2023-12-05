@@ -39,8 +39,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Jay Modi/Blazor/BlazorApp1/Pages/PizzaToppingPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGl6emFUb3BwaW5nUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Jay Modi/Blazor/BlazorApp1/Pages/SpecialOffersPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3BlY2lhbE9mZmVyc1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Jay Modi/Blazor/BlazorApp1/Pages/ToDo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9Eby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Jay Modi/Blazor/BlazorApp1/Shared/ConfigurePizzaDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXENvbmZpZ3VyZVBpenphRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Jay Modi/Blazor/BlazorApp1/Shared/DealComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERlYWxDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Jay Modi/Blazor/BlazorApp1/Shared/PizzaComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBpenphQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Jay Modi/Blazor/BlazorApp1/Shared/PizzaToppingComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBpenphVG9wcGluZ0NvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Jay Modi/Blazor/BlazorApp1/Shared/SurveyPrompt.razor]
